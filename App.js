@@ -10,6 +10,8 @@ import { purple, white } from './utils/colors'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Constants } from 'expo'
 import CreateDeckView from './components/CreateDeckView'
+import AddCardView from './components/AddCardView'
+import DeckCard from './components/DeckCard'
 
 
 function UdaciStatusBar ({ backgroundColor, ...props}) {
@@ -27,7 +29,7 @@ const Tabs = TabNavigator({
                 navigationOptions: {
                     tabBarLabel: 'Decks',
                     tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
-                }
+                },
         },
         CreateDeck: {
             screen: CreateDeckView,
@@ -65,6 +67,27 @@ const MainNavigator = StackNavigator({
             header: null
         }
     },
+    AddCardView: {
+        screen: AddCardView,
+        navigationOptions: {
+            headerTintColor:  white,
+            headerStyle: {
+                backgroundColor: purple
+            }
+        }
+    },
+    DeckOverview: {
+        screen: DeckOverview,
+        navigationOptions: {
+            headerTintColor:  white,
+            headerStyle: {
+                backgroundColor: purple
+            }
+        }
+    },
+    DeckCard: {
+        screen: DeckCard
+    }
 })
 
 export default class App extends React.Component {
