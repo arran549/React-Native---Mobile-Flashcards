@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import TextButton from './TextButton'
+import { connect } from 'react-redux'
 
 class DeckOverview extends Component {
     render () {
@@ -16,6 +17,11 @@ class DeckOverview extends Component {
     }
 }
 
+function mapStateToProps (state) {
+    return {
+
+    }
+}
 
 
-export default DeckOverview
+export default connect(mapStateToProps)(DeckOverview)

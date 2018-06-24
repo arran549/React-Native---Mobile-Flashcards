@@ -6,15 +6,18 @@ import reducer from './reducers'
 import DeckOverview from './components/DeckOverview'
 
 export default class App extends React.Component {
-  render() {
-    return (
-        <Provider store={this.store}>
-            <View style={styles.container}>
-                <DeckOverview />
-            </View>
-        </Provider>
-    );
-  }
+
+    store = createStore(reducer)
+    
+    render() {
+        return (
+            <Provider store={this.store}>
+                <View style={styles.container}>
+                    <DeckOverview />
+                </View>
+            </Provider>
+        );
+    } 
 }
 
 const styles = StyleSheet.create({
