@@ -8,7 +8,7 @@ import { v1 as uuid } from 'uuid'
 class CreateDeckView extends Component {
 
     state = {
-        name: 'Enter Deck Name',
+        name: 'Udacity',
     }
 
     addDeck = () => {
