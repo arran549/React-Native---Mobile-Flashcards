@@ -1,14 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
+import DeckOverview from './components/DeckOverview'
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+        <Provider store={this.store}>
+            <View style={styles.container}>
+                <DeckOverview />
+            </View>
+        </Provider>
     );
   }
 }
