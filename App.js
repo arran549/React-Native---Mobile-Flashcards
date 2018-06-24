@@ -8,12 +8,12 @@ import DeckOverview from './components/DeckOverview'
 export default class App extends React.Component {
 
     store = createStore(reducer)
-    
+
     render() {
         return (
             <Provider store={this.store}>
                 <View style={styles.container}>
-                    <DeckOverview />
+                    <DeckOverview deckId={'deck1'}/>
                 </View>
             </Provider>
         );
