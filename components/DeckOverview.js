@@ -3,30 +3,40 @@ import { StyleSheet, Text, View } from 'react-native';
 import TextButton from './TextButton'
 import AddCardView from './AddCardView'
 import { connect } from 'react-redux'
+import Title from './Title'
 
 class DeckOverview extends Component {
+
     render () {
+
+        //alert(JSON.stringify(this.props))
+
+        const { deck } = this.props.navigation.state.params
+
         return (
             <View>
             <View>
-                <Text>Udacity Flash Cards</Text>
-                <Text>{this.props.numberOfCards} Cards</Text>
+                <Title title={deck.name} />
+                <Text>{deck.cards.length} Cards</Text>
                 
-                <TextButton>ADD NEW CARD</TextButton>
+                <TextButton onPress={() => this.props.navigation.navigate('AddCardView', { deckId: deck.id })}>ADD NEW CARD</TextButton>
                 <TextButton>START QUIZ</TextButton>
 
             </View>
             <View>
-                <AddCardView />
+                {/* <AddCardView /> */}
             </View>
             </View>
         )
     }
 }
 
-function mapStateToProps (state, { deckId }) {
+function mapStateToProps (state, { navigation }) {
+
+    const { deck } = navigation.state.params;
+
     return {
-        numberOfCards: state[deckId].cards.length
+        deck: state[deck.id]
     }
 }
 
