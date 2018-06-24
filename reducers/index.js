@@ -1,10 +1,6 @@
 import { CREATE_NEW_DECK, ADD_CARD_TO_DECK, RECIEVE_DECKS }  from '../actions'
 
-function decks (state = { 
-        'deck1': {
-            cards: []
-        }
-    }, action) {
+function decks (state = { }, action) {
     switch(action.type) {
         case RECIEVE_DECKS : 
             return {
@@ -33,14 +29,4 @@ function decks (state = {
 }
 
 export default decks;
-
-// deck [id] : {
-//      title: 'string'
-//      cards: []
-// }
-// 
-// card : {
-//
-//
-//
 
