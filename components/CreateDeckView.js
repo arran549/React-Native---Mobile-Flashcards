@@ -15,8 +15,11 @@ class CreateDeckView extends Component {
 
         const { name } = this.state
 
+        const id = uuid()
+
         const deck = {
-             [uuid()]: {
+             [id]: {
+                    id,
                     name,
                     cards: []
              },
