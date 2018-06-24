@@ -9,3 +9,10 @@ export function addCardToDeck (card, deckId) {
         deckId
     }
 }
+
+export function createNewDeck (deck) {
+    return {
+        type: CREATE_NEW_DECK,
+        deck
+    }
+}

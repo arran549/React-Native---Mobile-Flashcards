@@ -2,25 +2,27 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import TextButton from './TextButton'
 import { connect } from 'react-redux'
-import { addCardToDeck } from '../actions'
+import { addCardToDeck, createNewDeck } from '../actions'
+import { v1 as uuid } from 'uuid'
 
 class CreateDeckView extends Component {
 
     state = {
-        question: 'Enter Title',
-        answer: 'something'
+        name: 'Enter Deck Name',
     }
 
-    addCard = () => {
+    addDeck = () => {
 
-        const { question, answer } = this.state
+        const { name } = this.state
 
-        const card = {
-             answer,
-             question
+        const deck = {
+             [uuid()]: {
+                    name,
+                    cards: []
+             },
         }
 
-        this.props.addCard(card)
+        this.props.addDeck(deck)
     }
 
     render () {
@@ -32,9 +34,9 @@ class CreateDeckView extends Component {
                 <View style={{marginTop: 20, padding: 10}}>
                 <Text>Name of Deck</Text>
                 <TextInput  style={{height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10}}
-                            onChangeText={(text)=> this.setState({ question: text })} value={this.state.question} />
+                            onChangeText={(text)=> this.setState({ name: text })} value={this.state.name} />
                 </View>
-                <TextButton onPress={this.addCard}>SUBMIT</TextButton>
+                <TextButton onPress={this.addDeck}>SUBMIT</TextButton>
             </View>
         )
     }
@@ -48,7 +50,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
      return {
-
+        addDeck: (deck) => dispatch(createNewDeck(deck))
      }
 }
 

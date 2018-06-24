@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux'
 
 class ViewDecks extends Component {
     render () {
         return (
             <View>
-                <Text>Udacity Flash Cards</Text>
-                <Text>Udacity Flash Cards</Text>
-                <Text>Udacity Flash Cards</Text>
-                <Text>Udacity Flash Cards</Text>
-                <Text>Udacity Flash Cards</Text>
+                {
+                    this.props.decks.map(deck => (<Text key={deck.name} >{deck.name}</Text>))
+                }
             </View>
         )
     }
 }
 
-export default ViewDecks
+function mapStateToProps (state) {
+    return {
+        decks: Object.values(state)
+    }
+}
+
+export default connect(mapStateToProps)(ViewDecks)

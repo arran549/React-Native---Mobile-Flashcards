@@ -12,7 +12,8 @@ function decks (state = {
             }
         case CREATE_NEW_DECK :
             return {
-
+                ...state,
+                ...action.deck                
             }
         case ADD_CARD_TO_DECK :
 
