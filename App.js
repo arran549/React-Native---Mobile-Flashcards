@@ -12,6 +12,7 @@ import { Constants } from 'expo'
 import CreateDeckView from './components/CreateDeckView'
 import AddCardView from './components/AddCardView'
 import DeckCard from './components/DeckCard'
+import QuizView from './components/QuizView'
 
 
 function UdaciStatusBar ({ backgroundColor, ...props}) {
@@ -87,6 +88,9 @@ const MainNavigator = StackNavigator({
     },
     DeckCard: {
         screen: DeckCard
+    },
+    QuizView: {
+        screen: QuizView
     }
 })
 

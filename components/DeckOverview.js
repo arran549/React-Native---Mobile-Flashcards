@@ -18,7 +18,7 @@ class DeckOverview extends Component {
                     <Text>{deck.cards.length} Cards</Text>
                     
                     <TextButton onPress={() => this.props.navigation.navigate('AddCardView', { deckId: deck.id })}>ADD NEW CARD</TextButton>
-                    <TextButton>START QUIZ</TextButton>
+                    <TextButton onPress={() => this.props.navigation.navigate('QuizView', { deckId: deck.id})}>START QUIZ</TextButton>
 
                 </View>
             </View>
