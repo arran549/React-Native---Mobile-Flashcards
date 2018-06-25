@@ -9,23 +9,18 @@ class DeckOverview extends Component {
 
     render () {
 
-        //alert(JSON.stringify(this.props))
-
-        const { deck } = this.props.navigation.state.params
+        const { deck } = this.props
 
         return (
             <View>
-            <View>
-                <Title title={deck.name} />
-                <Text>{deck.cards.length} Cards</Text>
-                
-                <TextButton onPress={() => this.props.navigation.navigate('AddCardView', { deckId: deck.id })}>ADD NEW CARD</TextButton>
-                <TextButton>START QUIZ</TextButton>
+                <View>
+                    <Title title={deck.name} />
+                    <Text>{deck.cards.length} Cards</Text>
+                    
+                    <TextButton onPress={() => this.props.navigation.navigate('AddCardView', { deckId: deck.id })}>ADD NEW CARD</TextButton>
+                    <TextButton>START QUIZ</TextButton>
 
-            </View>
-            <View>
-                {/* <AddCardView /> */}
-            </View>
+                </View>
             </View>
         )
     }

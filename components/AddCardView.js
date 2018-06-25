@@ -20,14 +20,18 @@ class AddCardView extends Component {
              question
         }
 
-        this.props.addCard(card)
+
+        this.props.addCard(card, this.props.navigation.state.params.deckId)
     }
 
     render () {
+
+        
+
         return (
             <View>
                 <Text>Add a card</Text>
-
+                <Text>DeckId: {this.props.navigation.state.params.deckId}</Text>
                 <Text>Question</Text>
                 <TextInput  style={{height: 40, borderColor: 'gray', borderWidth: 1}}
                             onChangeText={(text)=> this.setState({ question: text })} value={this.state.question} />
@@ -42,15 +46,15 @@ class AddCardView extends Component {
     }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps (state, { navigation }) {
     return {
-
+        deckId: navigation.state.params
     }
 }
 
 function mapDispatchToProps (dispatch) {
      return {
-         addCard: (card) => dispatch(addCardToDeck(card, 'deck1'))
+         addCard: (card, deckId) => dispatch(addCardToDeck(card, deckId))
      }
 }
 

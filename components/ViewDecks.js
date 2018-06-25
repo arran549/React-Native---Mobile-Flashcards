@@ -14,7 +14,7 @@ class ViewDecks extends Component {
             <View>
                 <Title title="Decks" />
                 {
-                    this.props.decks.map(deck => (<DeckCard key={deck.id} deck={deck} navigation={navigation}></DeckCard>))
+                    this.props.decks.map((deck) => (<DeckCard key={deck.id} deck={deck} navigation={navigation}></DeckCard>))
                 }
             </View>
         )
