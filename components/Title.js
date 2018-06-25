@@ -9,7 +9,7 @@ class Title extends Component {
 
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>{title}</Text>
+                <Text style={[styles.title]}>{title}</Text>
             </View>
         )
     }
