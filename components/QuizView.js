@@ -3,6 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import Title from './Title'
 import TextButton from './TextButton'
 import { connect } from 'react-redux'
+import { gray } from '../utils/colors'
 
 const Question = ({card}) => (
     <View>
@@ -62,6 +63,7 @@ class QuizView extends Component {
             <View>
                 <Question card={deck.cards[this.state.questionIndex]} />
                 <Text>Current Score: {this.state.score}</Text>
+                <Text style={{fontSize: 16, color: gray}}>{this.state.questionIndex + 1} / {deck.cards.length}</Text>
                 <View>
                     <TextButton onPress={this.answerCorrect}>Correct</TextButton>
                     <TextButton onPress={this.answerIncorrect}>Incorrect</TextButton>
