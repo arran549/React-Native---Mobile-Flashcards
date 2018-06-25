@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Platform, TouchableOpacity } from 'react-native'
 import Title from './Title'
-import { white } from '../utils/colors'
+import { white, gray } from '../utils/colors'
 
 class DeckCard extends Component {
     render () {
@@ -10,9 +10,12 @@ class DeckCard extends Component {
         const { navigate } = this.props.navigation
         
         return (
-            <View style={[styles.item, styles.label]}>
+            <View style={[styles.item]}>
                 <TouchableOpacity onPress={() => navigate('DeckOverview', { deck })}>
                     <Title key={deck.id} title={deck.name}></Title>
+                    <Text style={{fontSize: 16, color: gray}}>
+                                {deck.cards.length} Cards
+                            </Text>
                 </TouchableOpacity>
             </View>
         )
@@ -23,7 +26,7 @@ export default DeckCard
 
 const styles = StyleSheet.create({
     label: {
-        padding: 20
+        
     },
     item: {
         backgroundColor: white,
