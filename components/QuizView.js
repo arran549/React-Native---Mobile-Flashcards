@@ -42,6 +42,12 @@ class QuizView extends Component {
         })
     }
 
+    showAnswer = () => {
+        this.setState({
+            showQuestion: false
+        })
+    }
+
     render () {
 
         const { deck } = this.props;
@@ -57,10 +63,12 @@ class QuizView extends Component {
         const card = deck.cards[this.state.questionIndex]
 
         if(this.state.showQuestion) {
+            // card, numberOfQuestions, score, showAnswer(),
+
             return (<View>
                         <Title title={card.question} />
                         <Title title={`${this.state.score} out of ${deck.cards.length}`} />
-                        <SolidButton onPress={() => this.setState({ showQuestion: false })} >SHOW ANSWER</SolidButton>
+                        <SolidButton onPress={this.showAnswer} >SHOW ANSWER</SolidButton>
                     </View>)
         }
 
