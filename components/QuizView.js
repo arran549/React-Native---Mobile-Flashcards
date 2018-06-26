@@ -5,6 +5,7 @@ import TextButton from './TextButton'
 import SolidButton from './SolidButton'
 import { connect } from 'react-redux'
 import { gray } from '../utils/colors'
+import QuestionCard from './QuestionCard'
 
 
 class QuizView extends Component {
@@ -63,13 +64,7 @@ class QuizView extends Component {
         const card = deck.cards[this.state.questionIndex]
 
         if(this.state.showQuestion) {
-            // card, numberOfQuestions, score, showAnswer(),
-
-            return (<View>
-                        <Title title={card.question} />
-                        <Title title={`${this.state.score} out of ${deck.cards.length}`} />
-                        <SolidButton onPress={this.showAnswer} >SHOW ANSWER</SolidButton>
-                    </View>)
+            return (<QuestionCard card={card} score={this.state.score} numQuestions={deck.cards.length} showAnswer={this.showAnswer} />)
         }
 
         return (<View>
