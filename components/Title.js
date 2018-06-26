@@ -5,11 +5,11 @@ import { purple } from '../utils/colors'
 class Title extends Component {
     render () {
 
-        const { title } = this.props
+        const { title, style } = this.props
 
         return (
             <View style={styles.container}>
-                <Text style={[styles.title]}>{title}</Text>
+                <Text style={[styles.title, style]}>{title}</Text>
             </View>
         )
     }
