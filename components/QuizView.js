@@ -7,13 +7,6 @@ import { connect } from 'react-redux'
 import { gray } from '../utils/colors'
 
 
-const Ask = ({state, deck, card}) => {
-
-
-    return (state.showAnswer ? <Answer /> : <Question card={card} questions={deck.cards.length} score={state.score} />)
-}
-
-
 class QuizView extends Component {
 
     state = {
@@ -21,8 +14,6 @@ class QuizView extends Component {
         questionIndex: 0,
         showQuestion: true
     }
-
-
 
     shouldComponentUpdate (nextProps) {
         return nextProps.deck !== undefined
@@ -78,12 +69,6 @@ class QuizView extends Component {
                     <TextButton onPress={this.answerCorrect}>Correct</TextButton>
                     <TextButton onPress={this.answerIncorrect}>Incorrect</TextButton>
                 </View>)
-
-
-        
-
-        return <Ask state={this.state} deck={deck} card={card}/>
-
     }
 }
 
@@ -91,7 +76,6 @@ function mapStateToProps(state, { navigation }) {
 
     const { deckId } = navigation.state.params;
 
-    alert(deckId)
     return {
         deck: state[deckId]
     }
