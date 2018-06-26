@@ -2,28 +2,27 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import Title from './Title'
 import TextButton from './TextButton'
+import SolidButton from './SolidButton'
 import { connect } from 'react-redux'
 import { gray } from '../utils/colors'
 
-const Question = ({card}) => (
-    <View>
-        <Title title={card.question} />
-    </View>
-)
 
-const Result = ({score, questions}) => (
-    <View>
-        <Title title={'You answered '} />
-        <Title title={`${score} out of ${questions}`} />
-    </View>
-)
+const Ask = ({state, deck, card}) => {
+
+
+    return (state.showAnswer ? <Answer /> : <Question card={card} questions={deck.cards.length} score={state.score} />)
+}
+
 
 class QuizView extends Component {
 
     state = {
         score: 0,
-        questionIndex: 0
+        questionIndex: 0,
+        showQuestion: true
     }
+
+
 
     shouldComponentUpdate (nextProps) {
         return nextProps.deck !== undefined
@@ -38,16 +37,17 @@ class QuizView extends Component {
 
     answerCorrect = () => {
         this.incrementScore()
-        this.nexQuestion()
+        this.nextQuestion()
     }
 
     answerIncorrect = () => {
-        this.nexQuestion()
+        this.nextQuestion()
     }
 
-    nexQuestion = () => {
+    nextQuestion = () => {
         this.setState({
-            questionIndex: this.state.questionIndex + 1
+            questionIndex: this.state.questionIndex + 1,
+            showQuestion: true
         })
     }
 
@@ -56,20 +56,34 @@ class QuizView extends Component {
         const { deck } = this.props;
 
         if ( this.state.questionIndex === deck.cards.length) {
-            return (<Result score={this.state.score} questions={deck.cards.length}/> )
+            return (<View>
+                        <Text>Current Score: {this.state.score}</Text>
+                        <Title title={'You answered '} />
+                        <Text style={{fontSize: 16, color: gray}}>{this.state.score } / {deck.cards.length}</Text>
+                    </View>)
         }
 
-        return (
-            <View>
-                <Question card={deck.cards[this.state.questionIndex]} />
-                <Text>Current Score: {this.state.score}</Text>
-                <Text style={{fontSize: 16, color: gray}}>{this.state.questionIndex + 1} / {deck.cards.length}</Text>
-                <View>
+        const card = deck.cards[this.state.questionIndex]
+
+        if(this.state.showQuestion) {
+            return (<View>
+                        <Title title={card.question} />
+                        <Title title={`${this.state.score} out of ${deck.cards.length}`} />
+                        <SolidButton onPress={() => this.setState({ showQuestion: false })} >SHOW ANSWER</SolidButton>
+                    </View>)
+        }
+
+        return (<View>
+                    <Title title={card.answer} />
                     <TextButton onPress={this.answerCorrect}>Correct</TextButton>
                     <TextButton onPress={this.answerIncorrect}>Incorrect</TextButton>
-                </View>
-            </View>
-        )
+                </View>)
+
+
+        
+
+        return <Ask state={this.state} deck={deck} card={card}/>
+
     }
 }
 
