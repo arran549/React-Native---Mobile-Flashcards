@@ -7,7 +7,7 @@ import { addCardToDeck } from '../actions'
 class AddCardView extends Component {
 
     state = {
-        question: 'Enter Title',
+        question: 'When was udacity founded?',
         answer: 'something'
     }
 
