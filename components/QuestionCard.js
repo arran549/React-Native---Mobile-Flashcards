@@ -6,12 +6,12 @@ import SolidButton from './SolidButton'
 import { connect } from 'react-redux'
 import { gray, white } from '../utils/colors'
 
-export default function QuestionCard ({ card, numQuestions, showAnswer, score }) {
+export default function QuestionCard ({ card, numQuestions, showAnswer, question }) {
     return (
         <View style={styles.container}>
             <View style={[styles.item]}>
                 <Title title={card.question} style={{fontSize: 20}} />
-                <Title style={styles.small} title={`${score} out of ${numQuestions}`} />
+                <Title style={styles.small} title={`${question} out of ${numQuestions}`} />
             </View>
             <View style={styles.showAnswerBtn}>
                 <SolidButton style={styles.button} onPress={() => showAnswer()} >SHOW ANSWER</SolidButton>

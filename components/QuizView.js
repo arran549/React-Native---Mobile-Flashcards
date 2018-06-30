@@ -80,7 +80,7 @@ class QuizView extends Component {
         const card = deck.cards[this.state.questionIndex]
 
         if(this.state.showQuestion) {
-            return (<QuestionCard card={card} score={this.state.score} numQuestions={deck.cards.length} showAnswer={this.showAnswer} />)
+            return (<QuestionCard card={card} question={this.state.questionIndex + 1} numQuestions={deck.cards.length} showAnswer={this.showAnswer} />)
         }
         else {
             return (<AnswerCard card={card} answerCorrect={this.answerCorrect} answerIncorrect={this.answerIncorrect} />)
