@@ -18,8 +18,7 @@ class AskQuestion extends Component {
     }
 
     render () {
-        return (this.state.showAnswer ? <Answer /> : <Question card={card} 
-            questions={deck.cards.length} score={state.score} />)
+        return (this.state.showQuestion ?  <Question card={card} /> : <Answer questions={deck.cards.length} score={state.score} />)
     }
 
 }
@@ -42,7 +41,7 @@ const Question = ({ card, questions, score }) => (
     </View>
 )
 
-const Answer = () => (
+const Answer = ({ card }) => (
     <View>
         <Title title={card.answer} />
         <TextButton onPress={this.answerCorrect}>Correct</TextButton>

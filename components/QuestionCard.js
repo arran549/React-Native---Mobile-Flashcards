@@ -8,7 +8,7 @@ import { gray, white } from '../utils/colors'
 
 export default function QuestionCard ({ card, numQuestions, showAnswer, score }) {
     return (
-        <View>
+        <View style={styles.container}>
             <View style={[styles.item]}>
                 <Title title={card.question} style={{fontSize: 20}} />
                 <Title style={styles.small} title={`${score} out of ${numQuestions}`} />
@@ -21,6 +21,9 @@ export default function QuestionCard ({ card, numQuestions, showAnswer, score })
 }
 
 const styles = StyleSheet.create({
+    container: {
+
+    },
     button: {
        borderRadius: 10,
        marginTop: 30,
