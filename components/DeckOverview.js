@@ -7,6 +7,10 @@ import Title from './Title'
 
 class DeckOverview extends Component {
 
+    shouldComponentUpdate (nextProps) {
+        return nextProps.deck !== undefined
+    }
+    
     render () {
 
         const { deck } = this.props
@@ -28,10 +32,10 @@ class DeckOverview extends Component {
 
 function mapStateToProps (state, { navigation }) {
 
-    const { deck } = navigation.state.params;
+    const { deckId } = navigation.state.params;
 
     return {
-        deck: state[deck.id]
+        deck: state[deckId]
     }
 }
 

@@ -4,6 +4,7 @@ import Title from './Title'
 import { white, gray } from '../utils/colors'
 
 class DeckCard extends Component {
+
     render () {
 
         const { deck } = this.props
@@ -11,7 +12,7 @@ class DeckCard extends Component {
         
         return (
             <View style={[styles.item]}>
-                <TouchableOpacity onPress={() => navigate('DeckOverview', { deck })}>
+                <TouchableOpacity onPress={() => navigate('DeckOverview', { deckId: deck.id })}>
                     <Title key={deck.id} title={deck.name}></Title>
                     <Text style={{fontSize: 16, color: gray}}>
                                 {deck.cards.length} Cards

@@ -26,6 +26,8 @@ class CreateDeckView extends Component {
         }
 
         this.props.addDeck(deck)
+        //console.log("navigate to deck overview", deck)
+        this.props.navigation.navigate('DeckOverview', { deckId: id})
     }
 
     render () {
