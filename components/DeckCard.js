@@ -10,6 +10,8 @@ class DeckCard extends Component {
         const { deck } = this.props
         const { navigate } = this.props.navigation
         
+        if(deck === null ) return (<View></View>)
+
         return (
             <View style={[styles.item]}>
                 <TouchableOpacity onPress={() => navigate('DeckOverview', { deckId: deck.id })}>

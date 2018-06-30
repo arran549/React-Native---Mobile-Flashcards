@@ -16,3 +16,10 @@ export function createNewDeck (deck) {
         deck
     }
 }
+
+export function receiveDecks(decks) {
+    return {
+        type: RECIEVE_DECKS,
+        decks
+    }
+}

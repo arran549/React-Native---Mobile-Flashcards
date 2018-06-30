@@ -4,6 +4,7 @@ import TextButton from './TextButton'
 import { connect } from 'react-redux'
 import { addCardToDeck, createNewDeck } from '../actions'
 import { v1 as uuid } from 'uuid'
+import { saveDeck } from '../utils/api'
 
 class CreateDeckView extends Component {
 
@@ -25,8 +26,9 @@ class CreateDeckView extends Component {
              },
         }
 
+        saveDeck(deck)
         this.props.addDeck(deck)
-        //console.log("navigate to deck overview", deck)
+        
         this.props.navigation.navigate('DeckOverview', { deckId: id})
     }
 

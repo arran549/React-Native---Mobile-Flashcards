@@ -50,16 +50,30 @@ class QuizView extends Component {
         })
     }
 
+    goBackToDeck = () => {
+        this.props.navigation.navigate('DeckOverview', { deckId: this.props.deck.id })
+    }
+
+    restartQuiz = () => {
+        this.setState({
+            score: 0,
+            questionIndex: 0,
+            showQuestion: true
+        })
+    }
+
     render () {
 
         const { deck } = this.props;
-        
+
 
         if ( this.state.questionIndex === deck.cards.length) {
             return (<View>
                         <Text>Current Score: {this.state.score}</Text>
                         <Title title={'You answered '} />
                         <Text style={{fontSize: 16, color: gray}}>{this.state.score } / {deck.cards.length}</Text>
+                        <TextButton onPress={this.goBackToDeck}>BACK TO DECK</TextButton>
+                        <TextButton onPress={this.restartQuiz}>RESTART QUIZ</TextButton>
                     </View>)
         }
 

@@ -1,10 +1,15 @@
 import { CREATE_NEW_DECK, ADD_CARD_TO_DECK, RECIEVE_DECKS }  from '../actions'
 
 function decks (state = { }, action) {
+
+    
+
     switch(action.type) {
         case RECIEVE_DECKS : 
+            alert(JSON.stringify(action.decks))
             return {
-
+                ...state,
+                ...action.decks
             }
         case CREATE_NEW_DECK :
             return {
