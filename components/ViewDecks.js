@@ -18,7 +18,7 @@ class ViewDecks extends Component {
         //var decks = getDecks();
 
         getDecks().then((decks) => {
-            alert(JSON.stringify(decks))
+            //alert(JSON.stringify(decks))
             return dispatch(receiveDecks(decks))
         
         }).then(() => this.setState({ ready: true}))
@@ -32,7 +32,7 @@ class ViewDecks extends Component {
 
         return (
            
-            this.state.ready && decks.length > 0 ? (           
+            this.state.ready  ? (           
             <View>
                 <Title title="Decks" />
                 {

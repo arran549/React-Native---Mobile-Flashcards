@@ -17,8 +17,8 @@ class AddCardView extends Component {
         const { question, answer } = this.state
 
         const card = {
-             answer,
-             question
+            question,
+            answer,
         }
 
         const deckId = this.props.navigation.state.params.deckId
