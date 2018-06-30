@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 import TextButton from './TextButton'
 import { connect } from 'react-redux'
 import { addCardToDeck } from '../actions'
+import { saveCardToDeck } from '../utils/api'
 
 class AddCardView extends Component {
 
@@ -20,8 +21,11 @@ class AddCardView extends Component {
              question
         }
 
+        const deckId = this.props.navigation.state.params.deckId
 
-        this.props.addCard(card, this.props.navigation.state.params.deckId)
+        saveCardToDeck(deckId, card).then( () => {
+            this.props.addCard(card, deckId)
+        })
     }
 
     render () {

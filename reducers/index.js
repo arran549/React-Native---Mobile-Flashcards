@@ -6,7 +6,7 @@ function decks (state = { }, action) {
 
     switch(action.type) {
         case RECIEVE_DECKS : 
-            alert(JSON.stringify(action.decks))
+           // alert(JSON.stringify(action.decks))
             return {
                 ...state,
                 ...action.decks

@@ -15,9 +15,13 @@ class ViewDecks extends Component {
     componentDidMount () {
         const { dispatch } = this.props
 
-        var decks = getDecks();
+        //var decks = getDecks();
 
-        getDecks().then((decks) => dispatch(receiveDecks(decks))).then(() => this.setState({ ready: true}))
+        getDecks().then((decks) => {
+            alert(JSON.stringify(decks))
+            return dispatch(receiveDecks(decks))
+        
+        }).then(() => this.setState({ ready: true}))
     }
 
     render () {

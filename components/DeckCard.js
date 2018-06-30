@@ -10,7 +10,7 @@ class DeckCard extends Component {
         const { deck } = this.props
         const { navigate } = this.props.navigation
         
-        if(deck === null ) return (<View></View>)
+        if(deck === null || deck.cards === undefined) return (<View></View>)
 
         return (
             <View style={[styles.item]}>
