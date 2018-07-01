@@ -13,6 +13,7 @@ import CreateDeckView from './components/CreateDeckView'
 import AddCardView from './components/AddCardView'
 import DeckCard from './components/DeckCard'
 import QuizView from './components/QuizView'
+import { ifIphoneX } from 'react-native-iphone-x-helper'
 
 
 function UdaciStatusBar ({ backgroundColor, ...props}) {
@@ -34,7 +35,9 @@ const Tabs = TabNavigator({
                     tabBarIcon: ({ tintColor }) => <FontAwesome name='bars' size={30} color={tintColor} />,
                     headerStyle: {
                         backgroundColor: purple,
-                        marginTop: -40
+                        ...ifIphoneX({
+                            marginTop: -40
+                        })
                     },
                 },
         },
@@ -47,7 +50,9 @@ const Tabs = TabNavigator({
                 headerTintColor:  white,
                 headerStyle: {
                     backgroundColor: purple,
-                    marginTop: -40
+                    ...ifIphoneX({
+                        marginTop: -40
+                    })
                 },
             }
         }
@@ -87,7 +92,9 @@ const MainNavigator = StackNavigator({
             headerTintColor:  white,
             headerStyle: {
                 backgroundColor: purple,
-                marginTop: -40
+                ...ifIphoneX({
+                    marginTop: -40
+                })
             },
         }
     },
@@ -98,7 +105,9 @@ const MainNavigator = StackNavigator({
             headerTintColor:  white,
             headerStyle: {
                 backgroundColor: purple,
-                marginTop: -40
+                ...ifIphoneX({
+                    marginTop: -40
+                })
             },
         }
     },
@@ -109,7 +118,9 @@ const MainNavigator = StackNavigator({
             headerTintColor:  white,
             headerStyle: {
                 backgroundColor: purple,
-                marginTop: -40
+                ...ifIphoneX({
+                    marginTop: -40
+                })
             },
         }
     }
