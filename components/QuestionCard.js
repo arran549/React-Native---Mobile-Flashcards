@@ -11,7 +11,7 @@ export default function QuestionCard ({ card, numQuestions, showAnswer, question
         <View style={styles.container}>
             <View style={[styles.item]}>
                 <Title title={card.question} style={{fontSize: 20}} />
-                <Title style={styles.small} title={`${question} out of ${numQuestions}`} />
+                <Title style={styles.small} title={`${question} of ${numQuestions}`} />
             </View>
             <View style={styles.showAnswerBtn}>
                 <SolidButton style={styles.button} onPress={() => showAnswer()} >SHOW ANSWER</SolidButton>
@@ -25,9 +25,10 @@ const styles = StyleSheet.create({
 
     },
     button: {
-       borderRadius: 10,
-       marginTop: 30,
-       padding: 10,
+      // borderRadius: 10,
+       //marginTop: 30,
+       //padding: 20,
+       height: 60
        
     },
     small: {
@@ -37,11 +38,13 @@ const styles = StyleSheet.create({
 
     },
     showAnswerBtn: {
-        marginTop: 20
+        marginTop: 20,
+        flex: 1
     },
     item: {
         backgroundColor: white,
         borderRadius: Platform.OS === 'ios' ? 16 : 2,
+        height: 150,
         padding: 10,
         marginLeft: 10,
         marginRight: 10,

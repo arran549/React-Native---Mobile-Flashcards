@@ -6,15 +6,19 @@ import SolidButton from './SolidButton'
 import { connect } from 'react-redux'
 import { gray, white } from '../utils/colors'
 
-export default function AnswerCard ({ card, answerCorrect, answerIncorrect }) {
+import { red } from '../utils/colors'
+
+export default function AnswerCard ({ card, answerCorrect, answerIncorrect, question, numQuestions }) {
     return (
         <View style={styles.container}>
             <View style={styles.item}>
                 <Title title={card.answer} />
+                <Title style={styles.small} title={`${question} out of ${numQuestions}`} />
             </View>
-            
-            <SolidButton style={styles.button} onPress={() => answerCorrect()}>Correct</SolidButton>
-            <SolidButton style={styles.button} onPress={() => answerIncorrect()}>Incorrect</SolidButton>
+            <View style={styles.buttons}>
+                <SolidButton onPress={() => answerCorrect()}>Correct</SolidButton>
+                <SolidButton onPress={() => answerIncorrect()} color={red}>Incorrect</SolidButton>
+            </View>
 
         </View>
     )
@@ -22,15 +26,16 @@ export default function AnswerCard ({ card, answerCorrect, answerIncorrect }) {
 
 const styles = StyleSheet.create({
     container: {
-        //flex: 1
+        flex: 1,
+        justifyContent: 'flex-start'
     },
-    buttonsContainer: {
-    },
-    button: {
-       borderRadius: 10,
-       marginTop: 30,
-       padding: 10,
-       
+    buttons: {
+        //flex: 1,
+        //justifyContent: 'flex-start',
+        marginTop: 10,
+        height: 100,
+        alignItems: 'center',
+
     },
     small: {
         color: gray,
@@ -38,13 +43,12 @@ const styles = StyleSheet.create({
         paddingTop: 20
 
     },
-    showAnswerBtn: {
-        marginTop: 20
-    },
+
     item: {
         backgroundColor: white,
         borderRadius: Platform.OS === 'ios' ? 16 : 2,
         padding: 10,
+        height: 150,
         marginLeft: 10,
         marginRight: 10,
         marginTop: 17,

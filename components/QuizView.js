@@ -68,12 +68,12 @@ class QuizView extends Component {
 
 
         if ( this.state.questionIndex === deck.cards.length) {
-            return (<View>
-                        <Text>Current Score: {this.state.score}</Text>
-                        <Title title={'You answered '} />
-                        <Text style={{fontSize: 16, color: gray}}>{this.state.score } / {deck.cards.length}</Text>
-                        <TextButton onPress={this.goBackToDeck}>BACK TO DECK</TextButton>
-                        <TextButton onPress={this.restartQuiz}>RESTART QUIZ</TextButton>
+            return (<View style={styles.container}>
+                        
+                        <Title style={styles.title} title={'You answered '} />
+                        <Text style={{fontSize: 28, color: gray, marginTop: 20}}>{this.state.score } / {deck.cards.length}</Text>
+                        <TextButton style={styles.button} onPress={this.goBackToDeck}>BACK TO DECK</TextButton>
+                        <TextButton style={styles.button} onPress={this.restartQuiz}>RESTART QUIZ</TextButton>
                     </View>)
         }
 
@@ -83,7 +83,7 @@ class QuizView extends Component {
             return (<QuestionCard card={card} question={this.state.questionIndex + 1} numQuestions={deck.cards.length} showAnswer={this.showAnswer} />)
         }
         else {
-            return (<AnswerCard card={card} answerCorrect={this.answerCorrect} answerIncorrect={this.answerIncorrect} />)
+            return (<AnswerCard card={card} answerCorrect={this.answerCorrect} question={this.state.questionIndex + 1} numQuestions={deck.cards.length} answerIncorrect={this.answerIncorrect} />)
         }
     }
 }
@@ -98,3 +98,15 @@ function mapStateToProps(state, { navigation }) {
 }
 
 export default connect(mapStateToProps)(QuizView)
+
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center'
+    },
+    button: {
+        marginTop: 20
+    },
+    title: {
+        marginTop: 30
+    }
+})
