@@ -13,14 +13,12 @@ class DeckCard extends Component {
         if(deck === null || deck.cards === undefined) return (<View></View>)
 
         return (
-            <View style={[styles.item]}>
                 <TouchableOpacity onPress={() => navigate('DeckOverview', { deckId: deck.id })}>
-                    <Title key={deck.id} title={deck.name}></Title>
-                    <Text style={{fontSize: 16, color: gray}}>
-                                {deck.cards.length} Cards
-                            </Text>
+                    <View style={[styles.item]}>
+                        <Title key={deck.id} title={deck.name}></Title>
+                        <Text style={styles.text}>{deck.cards.length} Cards</Text>
+                    </View>
                 </TouchableOpacity>
-            </View>
         )
     }
 }
@@ -28,8 +26,11 @@ class DeckCard extends Component {
 export default DeckCard
 
 const styles = StyleSheet.create({
-    label: {
-        
+    text: {
+        fontSize: 16, 
+        color: gray, 
+        textAlign: 'center', 
+        marginTop: 10
     },
     item: {
         backgroundColor: white,
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
         marginTop: 17,
         justifyContent: 'center',
+        alignItems: 'center',
         shadowRadius: 3,
         shadowOpacity: 0.8,
         shadowColor: 'rgba(0,0,0,0.24)',
