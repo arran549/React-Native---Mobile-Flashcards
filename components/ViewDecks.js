@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { connect } from 'react-redux'
 import DeckCard from './DeckCard'
 import Title from './Title'
@@ -31,11 +31,11 @@ class ViewDecks extends Component {
         return (
            
             this.state.ready  ? (           
-            <View>
+            <ScrollView>
                 {
                     this.props.decks.map((deck) => (<DeckCard key={deck.id} deck={deck} navigation={navigation}></DeckCard>))
                 }
-            </View>
+            </ScrollView>
             )
             : (<View><Text>Hello</Text></View>)
         )
