@@ -44,7 +44,12 @@ const Tabs = TabNavigator({
             navigationOptions: {
                 tabBarLabel: 'Create Deck',
                 tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />,
-                header: null
+                title: 'Create Deck',
+                headerTintColor:  white,
+                headerStyle: {
+                    backgroundColor: purple,
+                    marginTop: -40
+                },
             }
         }
     } , 
@@ -66,11 +71,6 @@ const Tabs = TabNavigator({
                 shadowOpacity: 1
             }
         },
-        // navigationOptions: {
-        //     header: {
-        //         //visible: false
-        //     }
-        // }
     })
 
 

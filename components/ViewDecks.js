@@ -28,8 +28,6 @@ class ViewDecks extends Component {
 
         const { navigation, decks } = this.props
 
-        //alert(JSON.stringify(decks))
-
         return (
            
             this.state.ready  ? (           
