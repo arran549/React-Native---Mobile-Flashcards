@@ -31,7 +31,7 @@ const Tabs = TabNavigator({
                     tabBarLabel: 'Decks',
                     title: 'Decks',
                     headerTintColor:  white,
-                    tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />,
+                    tabBarIcon: ({ tintColor }) => <FontAwesome name='bars' size={30} color={tintColor} />,
                     //header: null
                     headerStyle: {
                         backgroundColor: purple,
@@ -43,7 +43,7 @@ const Tabs = TabNavigator({
             screen: CreateDeckView,
             navigationOptions: {
                 tabBarLabel: 'Create Deck',
-                tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />,
+                tabBarIcon: ({ tintColor }) => <FontAwesome name='plus' size={30} color={tintColor} />,
                 title: 'Create Deck',
                 headerTintColor:  white,
                 headerStyle: {
