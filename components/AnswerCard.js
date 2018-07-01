@@ -8,21 +8,33 @@ import { gray, white } from '../utils/colors'
 
 import { red } from '../utils/colors'
 
-export default function AnswerCard ({ card, answerCorrect, answerIncorrect, question, numQuestions }) {
-    return (
-        <View style={styles.container}>
-            <View style={styles.item}>
-                <Title title={card.answer} />
-                <Title style={styles.small} title={`${question} of ${numQuestions}`} />
-            </View>
-            <View style={styles.buttons}>
-                <SolidButton onPress={() => answerCorrect()}>Correct</SolidButton>
-                <SolidButton onPress={() => answerIncorrect()} color={red}>Incorrect</SolidButton>
-            </View>
+class AnswerCard extends Component {
 
-        </View>
-    )
+    state = {
+        opacity: 0
+    }
+
+    render() {
+
+        const { card, answerCorrect, answerIncorrect, question, numQuestions } = this.props
+
+        return (
+            <View style={styles.container}>
+                <View style={styles.item}>
+                    <Title title={card.answer} />
+                    <Title style={styles.small} title={`${question} of ${numQuestions}`} />
+                </View>
+                <View style={styles.buttons}>
+                    <SolidButton onPress={() => answerCorrect()}>Correct</SolidButton>
+                    <SolidButton onPress={() => answerIncorrect()} color={red}>Incorrect</SolidButton>
+                </View>    
+            </View>
+        )
+    }
+
 }
+
+export default AnswerCard
 
 const styles = StyleSheet.create({
     container: {
