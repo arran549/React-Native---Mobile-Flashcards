@@ -4,7 +4,7 @@ import TextButton from './TextButton'
 import { connect } from 'react-redux'
 import { addCardToDeck } from '../actions'
 import { saveCardToDeck } from '../utils/api'
-import { gray, white } from '../utils/colors'
+import { gray, white, purple } from '../utils/colors'
 
 class AddCardView extends Component {
 
@@ -94,7 +94,8 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     button: {
-        marginTop: 20
+        marginTop: 20,
+        color: purple
     },
     input: {
         height: 40, 

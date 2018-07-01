@@ -4,7 +4,7 @@ import TextButton from './TextButton'
 import AddCardView from './AddCardView'
 import { connect } from 'react-redux'
 import Title from './Title'
-import { white, gray } from '../utils/colors'
+import { white, gray, purple } from '../utils/colors'
 
 
 class DeckOverview extends Component {
@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 30,
-        fontSize: 18
+        fontSize: 18,
+        color: purple
     },
     buttons: {
         marginTop: 40
