@@ -65,32 +65,41 @@ const MainNavigator = StackNavigator({
     Home: {
         screen: Tabs,
         navigationOptions: {
-            header: null
+            //header: null
         }
     },
     AddCardView: {
         screen: AddCardView,
         navigationOptions: {
+            title: "ADD CARD",
             headerTintColor:  white,
             headerStyle: {
-                backgroundColor: purple
-            }
+                backgroundColor: purple,
+                marginTop: -40
+            },
         }
     },
     DeckOverview: {
         screen: DeckOverview,
         navigationOptions: {
+            title: "Deck",
             headerTintColor:  white,
             headerStyle: {
-                backgroundColor: purple
-            }
+                backgroundColor: purple,
+                marginTop: -40
+            },
         }
     },
-    DeckCard: {
-        screen: DeckCard
-    },
     QuizView: {
-        screen: QuizView
+        screen: QuizView,
+        navigationOptions: {
+            title: "DECK QUIZ",
+            headerTintColor:  white,
+            headerStyle: {
+                backgroundColor: purple,
+                marginTop: -40
+            },
+        }
     }
 })
 
