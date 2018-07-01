@@ -74,7 +74,7 @@ class QuizView extends Component {
                         <Text style={{fontSize: 28, color: gray, marginTop: 20}}>{this.state.score } / {deck.cards.length}</Text>
                         <View style={styles.buttons}>
                             <TextButton style={styles.button} onPress={this.goBackToDeck}>BACK TO DECK</TextButton>
-                            <Button style={styles.button} onPress={this.restartQuiz} disabled={true} title='RESTART QUIZ' />
+                            <TextButton style={styles.button} onPress={this.restartQuiz}>RESTART QUIZ</TextButton>
                         </View>
                     </View>)
         }
