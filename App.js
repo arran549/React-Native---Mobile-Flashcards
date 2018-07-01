@@ -6,7 +6,7 @@ import reducer from './reducers'
 import DeckOverview from './components/DeckOverview'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import ViewDecks from './components/ViewDecks'
-import { purple, white } from './utils/colors'
+import { purple, white, green } from './utils/colors'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Constants } from 'expo'
 import CreateDeckView from './components/CreateDeckView'
@@ -29,16 +29,24 @@ const Tabs = TabNavigator({
                 screen: ViewDecks,
                 navigationOptions: {
                     tabBarLabel: 'Decks',
-                    tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
+                    title: 'Decks',
+                    headerTintColor:  white,
+                    tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />,
+                    //header: null
+                    headerStyle: {
+                        backgroundColor: purple,
+                        marginTop: -40
+                    },
                 },
         },
         CreateDeck: {
             screen: CreateDeckView,
             navigationOptions: {
                 tabBarLabel: 'Create Deck',
-                tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
+                tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />,
+                header: null
             }
-    }
+        }
     } , 
     {
         tabBarPosition: 'bottom',
@@ -57,7 +65,12 @@ const Tabs = TabNavigator({
                 shadowRadius: 6,
                 shadowOpacity: 1
             }
-        }
+        },
+        // navigationOptions: {
+        //     header: {
+        //         //visible: false
+        //     }
+        // }
     })
 
 

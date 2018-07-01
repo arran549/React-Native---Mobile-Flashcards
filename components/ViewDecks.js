@@ -34,7 +34,6 @@ class ViewDecks extends Component {
            
             this.state.ready  ? (           
             <View>
-                <Title title="Decks" />
                 {
                     this.props.decks.map((deck) => (<DeckCard key={deck.id} deck={deck} navigation={navigation}></DeckCard>))
                 }
