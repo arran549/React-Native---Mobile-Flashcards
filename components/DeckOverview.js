@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Platform, Button } from 'react-native';
+import { StyleSheet, Text, View, Platform, Button, Animated } from 'react-native';
 import TextButton from './TextButton'
 import AddCardView from './AddCardView'
 import { connect } from 'react-redux'
@@ -9,24 +9,36 @@ import { white, gray, purple } from '../utils/colors'
 
 class DeckOverview extends Component {
 
+    state = {
+        opacity: new Animated.Value(0)
+    }
+
     shouldComponentUpdate (nextProps) {
         return nextProps.deck !== undefined
     }
     
+    componentDidMount () {
+        const { opacity } = this.state
+
+        Animated.timing(opacity, { toValue: 1, duration: 1000 }).start()
+    }
+
     render () {
+
+        const { opacity } = this.state
 
         const { deck } = this.props
 
         return (
             <View>
-                <View style={styles.item}>
+                <Animated.View style={[styles.item, { opacity: opacity}]}>
                     <Title style={styles.title} title={deck.name} />
                     <Text style={styles.cards}>{deck.cards.length} Cards</Text>
                     <View style={styles.buttons}>
                         <TextButton style={styles.button} onPress={() => this.props.navigation.navigate('AddCardView', { deckId: deck.id })}>ADD CARD</TextButton>
                         <Button style={styles.button} onPress={() => this.props.navigation.navigate('QuizView', { deckId: deck.id})} disabled={deck.cards.length <= 0} title='START QUIZ' />
                     </View>
-                </View>
+                </Animated.View>
             </View>
         )
     }
