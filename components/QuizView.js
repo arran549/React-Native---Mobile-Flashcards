@@ -72,8 +72,10 @@ class QuizView extends Component {
                         
                         <Title style={styles.title} title={'You answered '} />
                         <Text style={{fontSize: 28, color: gray, marginTop: 20}}>{this.state.score } / {deck.cards.length}</Text>
-                        <TextButton style={styles.button} onPress={this.goBackToDeck}>BACK TO DECK</TextButton>
-                        <TextButton style={styles.button} onPress={this.restartQuiz}>RESTART QUIZ</TextButton>
+                        <View style={styles.buttons}>
+                            <TextButton style={styles.button} onPress={this.goBackToDeck}>BACK TO DECK</TextButton>
+                            <TextButton style={styles.button} onPress={this.restartQuiz}>RESTART QUIZ</TextButton>
+                        </View>
                     </View>)
         }
 
@@ -104,9 +106,12 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     button: {
-        marginTop: 20
+        marginTop: 30
     },
     title: {
-        marginTop: 30
+        marginTop: 50
+    },
+    buttons: {
+        marginTop: 40
     }
 })

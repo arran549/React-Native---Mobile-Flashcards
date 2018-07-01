@@ -13,7 +13,7 @@ export default function AnswerCard ({ card, answerCorrect, answerIncorrect, ques
         <View style={styles.container}>
             <View style={styles.item}>
                 <Title title={card.answer} />
-                <Title style={styles.small} title={`${question} out of ${numQuestions}`} />
+                <Title style={styles.small} title={`${question} of ${numQuestions}`} />
             </View>
             <View style={styles.buttons}>
                 <SolidButton onPress={() => answerCorrect()}>Correct</SolidButton>
