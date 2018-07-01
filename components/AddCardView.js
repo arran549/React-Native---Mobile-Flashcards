@@ -34,6 +34,8 @@ class AddCardView extends Component {
             answer: null,
             disableSubmit: true
         })
+
+        this.props.navigation.navigate('DeckOverview', { deckId })
     }
 
     handleQuestionText = (text) => {
