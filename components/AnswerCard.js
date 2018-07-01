@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Platform } from 'react-native';
+import { View, Text, StyleSheet, Platform, Animated } from 'react-native';
 import Title from './Title'
 import TextButton from './TextButton'
 import SolidButton from './SolidButton'
@@ -11,19 +11,27 @@ import { red } from '../utils/colors'
 class AnswerCard extends Component {
 
     state = {
-        opacity: 0
+        opacity: new Animated.Value(0)
+    }
+
+    componentDidMount () {
+
+        const { opacity } = this.state
+
+        Animated.timing(opacity, { toValue: 1, duration: 1000 }).start()
     }
 
     render() {
 
         const { card, answerCorrect, answerIncorrect, question, numQuestions } = this.props
+        const { opacity } = this.state
 
         return (
-            <View style={styles.container}>
-                <View style={styles.item}>
+            <View style={[styles.container]}>
+                <Animated.View style={[styles.item, { opacity: opacity }]}>
                     <Title title={card.answer} />
                     <Title style={styles.small} title={`${question} of ${numQuestions}`} />
-                </View>
+                </Animated.View>
                 <View style={styles.buttons}>
                     <SolidButton onPress={() => answerCorrect()}>Correct</SolidButton>
                     <SolidButton onPress={() => answerIncorrect()} color={red}>Incorrect</SolidButton>
