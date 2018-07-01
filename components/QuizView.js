@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { gray, white } from '../utils/colors'
 import QuestionCard from './QuestionCard'
 import AnswerCard from './AnswerCard'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
 
 class QuizView extends Component {
@@ -62,12 +63,19 @@ class QuizView extends Component {
         })
     }
 
+    completedQuiz = () => {
+        clearLocalNotification.then(setLocalNotification)
+    }
+
     render () {
 
         const { deck } = this.props;
 
 
         if ( this.state.questionIndex === deck.cards.length) {
+
+            this.completedQuiz()
+
             return (<View style={styles.container}>
                         
                         <Title style={styles.title} title={'You answered '} />
