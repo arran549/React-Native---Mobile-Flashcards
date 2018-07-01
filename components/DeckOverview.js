@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Platform } from 'react-native';
 import TextButton from './TextButton'
 import AddCardView from './AddCardView'
 import { connect } from 'react-redux'
 import Title from './Title'
+import { white, gray } from '../utils/colors'
+
 
 class DeckOverview extends Component {
 
@@ -17,13 +19,13 @@ class DeckOverview extends Component {
 
         return (
             <View>
-                <View>
+                <View style={styles.item}>
                     <Title title={deck.name} />
                     <Text>{deck.cards.length} Cards</Text>
-                    
-                    <TextButton onPress={() => this.props.navigation.navigate('AddCardView', { deckId: deck.id })}>ADD CARD</TextButton>
-                    <TextButton onPress={() => this.props.navigation.navigate('QuizView', { deckId: deck.id})}>START QUIZ</TextButton>
-
+                    <View style={styles.buttons}>
+                        <TextButton style={styles.button} onPress={() => this.props.navigation.navigate('AddCardView', { deckId: deck.id })}>ADD CARD</TextButton>
+                        <TextButton style={styles.button} onPress={() => this.props.navigation.navigate('QuizView', { deckId: deck.id})}>START QUIZ</TextButton>
+                    </View>
                 </View>
             </View>
         )
@@ -41,3 +43,29 @@ function mapStateToProps (state, { navigation }) {
 
 
 export default connect(mapStateToProps)(DeckOverview)
+
+const styles = StyleSheet.create({
+    item: {
+        backgroundColor: white,
+        borderRadius: Platform.OS === 'ios' ? 16 : 2,
+        padding: 20,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 17,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowRadius: 3,
+        shadowOpacity: 0.8,
+        shadowColor: 'rgba(0,0,0,0.24)',
+        shadowOffset: {
+            width: 0,
+            height: 3
+        }
+    },
+    button: {
+        marginTop: 30
+    },
+    buttons: {
+        marginTop: 40
+    }
+})
