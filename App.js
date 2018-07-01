@@ -32,7 +32,6 @@ const Tabs = TabNavigator({
                     title: 'Decks',
                     headerTintColor:  white,
                     tabBarIcon: ({ tintColor }) => <FontAwesome name='bars' size={30} color={tintColor} />,
-                    //header: null
                     headerStyle: {
                         backgroundColor: purple,
                         marginTop: -40

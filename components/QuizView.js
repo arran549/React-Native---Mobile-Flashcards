@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Platform } from 'react-native';
+import { View, StyleSheet, Text, Platform, Button } from 'react-native';
 import Title from './Title'
 import TextButton from './TextButton'
 import SolidButton from './SolidButton'
@@ -74,7 +74,7 @@ class QuizView extends Component {
                         <Text style={{fontSize: 28, color: gray, marginTop: 20}}>{this.state.score } / {deck.cards.length}</Text>
                         <View style={styles.buttons}>
                             <TextButton style={styles.button} onPress={this.goBackToDeck}>BACK TO DECK</TextButton>
-                            <TextButton style={styles.button} onPress={this.restartQuiz}>RESTART QUIZ</TextButton>
+                            <Button style={styles.button} onPress={this.restartQuiz} disabled={true} title='RESTART QUIZ' />
                         </View>
                     </View>)
         }

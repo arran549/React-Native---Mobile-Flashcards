@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Platform } from 'react-native';
+import { StyleSheet, Text, View, Platform, Button } from 'react-native';
 import TextButton from './TextButton'
 import AddCardView from './AddCardView'
 import { connect } from 'react-redux'
@@ -21,10 +21,10 @@ class DeckOverview extends Component {
             <View>
                 <View style={styles.item}>
                     <Title title={deck.name} />
-                    <Text>{deck.cards.length} Cards</Text>
+                    <Text style={styles.cards}>{deck.cards.length} Cards</Text>
                     <View style={styles.buttons}>
                         <TextButton style={styles.button} onPress={() => this.props.navigation.navigate('AddCardView', { deckId: deck.id })}>ADD CARD</TextButton>
-                        <TextButton style={styles.button} onPress={() => this.props.navigation.navigate('QuizView', { deckId: deck.id})}>START QUIZ</TextButton>
+                        <Button style={styles.button} onPress={() => this.props.navigation.navigate('QuizView', { deckId: deck.id})} disabled={deck.cards.length <= 0} title='START QUIZ' />
                     </View>
                 </View>
             </View>
@@ -63,9 +63,14 @@ const styles = StyleSheet.create({
         }
     },
     button: {
-        marginTop: 30
+        marginTop: 30,
+        fontSize: 18
     },
     buttons: {
         marginTop: 40
+    },
+    cards: {
+        color: gray,
+        marginTop: 10
     }
 })
