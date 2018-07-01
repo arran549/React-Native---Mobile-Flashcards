@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Platform } from 'react-native';
 import Title from './Title'
 import TextButton from './TextButton'
 import SolidButton from './SolidButton'
 import { connect } from 'react-redux'
-import { gray } from '../utils/colors'
+import { gray, white } from '../utils/colors'
 import QuestionCard from './QuestionCard'
 import AnswerCard from './AnswerCard'
 
@@ -103,7 +103,21 @@ export default connect(mapStateToProps)(QuizView)
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center'
+        backgroundColor: white,
+        borderRadius: Platform.OS === 'ios' ? 16 : 2,
+        padding: 20,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 17,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowRadius: 3,
+        shadowOpacity: 0.8,
+        shadowColor: 'rgba(0,0,0,0.24)',
+        shadowOffset: {
+            width: 0,
+            height: 3
+        }
     },
     button: {
         marginTop: 30
