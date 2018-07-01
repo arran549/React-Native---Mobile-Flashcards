@@ -20,7 +20,7 @@ class DeckOverview extends Component {
         return (
             <View>
                 <View style={styles.item}>
-                    <Title title={deck.name} />
+                    <Title style={styles.title} title={deck.name} />
                     <Text style={styles.cards}>{deck.cards.length} Cards</Text>
                     <View style={styles.buttons}>
                         <TextButton style={styles.button} onPress={() => this.props.navigation.navigate('AddCardView', { deckId: deck.id })}>ADD CARD</TextButton>
@@ -45,6 +45,9 @@ function mapStateToProps (state, { navigation }) {
 export default connect(mapStateToProps)(DeckOverview)
 
 const styles = StyleSheet.create({
+    title: {
+        marginTop: 20
+    },
     item: {
         backgroundColor: white,
         borderRadius: Platform.OS === 'ios' ? 16 : 2,
@@ -71,6 +74,6 @@ const styles = StyleSheet.create({
     },
     cards: {
         color: gray,
-        marginTop: 10
+        marginTop: 20
     }
 })

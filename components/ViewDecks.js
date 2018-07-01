@@ -15,10 +15,7 @@ class ViewDecks extends Component {
     componentDidMount () {
         const { dispatch } = this.props
 
-        //var decks = getDecks();
-
         getDecks().then((decks) => {
-            //alert(JSON.stringify(decks))
             return dispatch(receiveDecks(decks))
         
         }).then(() => this.setState({ ready: true}))
@@ -30,14 +27,14 @@ class ViewDecks extends Component {
 
         return (
            
-            this.state.ready  ? (           
+            this.state.ready ? (           
             <ScrollView>
                 {
                     this.props.decks.map((deck) => (<DeckCard key={deck.id} deck={deck} navigation={navigation}></DeckCard>))
                 }
             </ScrollView>
             )
-            : (<View><Text>Hello</Text></View>)
+            : (<View><Text>...Loading</Text></View>)
         )
     }
 }

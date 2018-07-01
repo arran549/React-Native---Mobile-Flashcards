@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Platform } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Platform, Button } from 'react-native';
 import TextButton from './TextButton'
 import { connect } from 'react-redux'
 import { addCardToDeck } from '../actions'
@@ -10,7 +10,8 @@ class AddCardView extends Component {
 
     state = {
         question: null,
-        answer: null
+        answer: null,
+        disableSubmit: true
     }
 
     addCard = () => {
@@ -30,15 +31,29 @@ class AddCardView extends Component {
 
         this.setState({
             question: null,
-            answer: null
+            answer: null,
+            disableSubmit: true
         })
+    }
 
-        
+    handleQuestionText = (text) => {
+        this.setState({ question: text })
+        this.updateSubmit();
+    }
+
+    handleAnswerText = (text) => {
+        this.setState({ answer: text })
+        this.updateSubmit();
+    }
+
+    updateSubmit = () => {
+
+        const { question, answer } = this.state
+
+        this.setState({disableSubmit: !question || !answer})
     }
 
     render () {
-
-        
 
         return (
             <View style={styles.container}>
@@ -46,13 +61,13 @@ class AddCardView extends Component {
                 
                 <Text style={styles.label}>Question</Text>
                 <TextInput  style={styles.input}
-                            onChangeText={(text)=> this.setState({ question: text })} value={this.state.question} placeholder='Question' />
+                            onChangeText={this.handleQuestionText} value={this.state.question} placeholder='Question' />
 
                 <Text style={styles.label}>Answer</Text>
                 <TextInput  style={styles.input}
-                            onChangeText={(text)=> this.setState({ answer: text })} value={this.state.answer} placeholder='Answer' />
+                            onChangeText={this.handleAnswerText} value={this.state.answer} placeholder='Answer' />
 
-                <TextButton style={styles.button} onPress={this.addCard}>SUBMIT</TextButton>
+                <Button style={styles.button} onPress={this.addCard} disabled={this.state.disableSubmit} title='SUBMIT' />
             </View>
         )
     }
