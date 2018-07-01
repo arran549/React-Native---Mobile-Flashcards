@@ -30,6 +30,7 @@ class AnswerCard extends Component {
             <View style={[styles.container]}>
                 <Animated.View style={[styles.item, { opacity: opacity }]}>
                     <Title title={card.answer} />
+                    <Title style={styles.small} title={`Answer`} />
                     <Title style={styles.small} title={`${question} of ${numQuestions}`} />
                 </Animated.View>
                 <View style={styles.buttons}>

@@ -11,6 +11,7 @@ export default function QuestionCard ({ card, numQuestions, showAnswer, question
         <View style={styles.container}>
             <View style={[styles.item]}>
                 <Title title={card.question} style={{fontSize: 20}} />
+                <Title style={styles.small} title={`Question`} />
                 <Title style={styles.small} title={`${question} of ${numQuestions}`} />
             </View>
             <View style={styles.showAnswerBtn}>
