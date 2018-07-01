@@ -14,6 +14,7 @@ import AddCardView from './components/AddCardView'
 import DeckCard from './components/DeckCard'
 import QuizView from './components/QuizView'
 import { ifIphoneX } from 'react-native-iphone-x-helper'
+import { setLocalNotification } from './utils/helpers'
 
 
 function UdaciStatusBar ({ backgroundColor, ...props}) {
@@ -129,6 +130,10 @@ const MainNavigator = StackNavigator({
 export default class App extends React.Component {
 
     store = createStore(reducer)
+
+    componentDidMount() {
+        setLocalNotification()
+    }
 
     render() {
         return (
