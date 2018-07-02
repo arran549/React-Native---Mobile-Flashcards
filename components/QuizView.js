@@ -9,7 +9,6 @@ import QuestionCard from './QuestionCard'
 import AnswerCard from './AnswerCard'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
-
 class QuizView extends Component {
 
     state = {
@@ -64,7 +63,7 @@ class QuizView extends Component {
     }
 
     completedQuiz = () => {
-        clearLocalNotification.then(setLocalNotification)
+        clearLocalNotification().then(setLocalNotification)
     }
 
     render () {
